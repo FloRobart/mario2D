@@ -1,6 +1,8 @@
 package jeu.ihm;
 
 
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 
 import jeu.Controleur;
@@ -16,9 +18,11 @@ public class Frame extends JFrame
     public Frame(Controleur ctrl)
     {
         this.ctrl = ctrl;
+
+        Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         
         this.setTitle("Jeu");
-        this.setSize(800, 600);
+        this.setSize((int)tailleEcran.getWidth(), (int)tailleEcran.getHeight());
         this.setLocation(0, 0);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
