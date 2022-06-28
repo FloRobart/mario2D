@@ -1,14 +1,13 @@
-package jeu.ihm;
+package src.ihm;
 
 
-import jeu.Controleur;
+import src.Controleur;
 
 import java.awt.Color;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-import 
 
 public class Panel extends JPanel
 {

@@ -1,4 +1,4 @@
-package jeu.ihm;
+package src.ihm;
 
 
 import java.awt.Dimension;

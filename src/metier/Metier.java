@@ -1,7 +1,7 @@
-package jeu.metier;
+package src.metier;
 
 
-import jeu.Controleur;
+import src.Controleur;
 
 
 public class Metier
