@@ -1,0 +1,10 @@
+-encoding UTF8
+
+./jeu/Controleur.java
+
+./jeu/metier/Metier.java
+
+./jeu/ihm/Frame.java
+./jeu/ihm/Panel.java
+
+-d ./exe/
