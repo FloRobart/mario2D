@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 public class Panel extends JPanel
 {
     /* Constante */
-    private static final int HAUTEUR_PERSO = 64;
-    private static final int LARGEUR_PERSO = 48;
+    private static final int HAUTEUR_PERSO = 120;
+    private static final int LARGEUR_PERSO = 80;
     
     /* Attribut */
     private Controleur ctrl;
@@ -25,6 +25,8 @@ public class Panel extends JPanel
     public Panel(Controleur ctrl)
     {
         this.ctrl = ctrl;
+
+        this.setBackground(Color.BLACK);
 
         /*-------------------------*/
         /* Création des composants */
@@ -51,8 +53,8 @@ public class Panel extends JPanel
         super.paint(g);
         Color couleurInitiale = g.getColor();
 
-        this.posXPerso = 100;
-        this.posYPerso = this.getHeight() - Panel.HAUTEUR_PERSO - 1;
+        this.posXPerso = 400;
+        this.posYPerso = 400;
 
         this.dessinerPersonnage(g);
 
@@ -80,7 +82,7 @@ public class Panel extends JPanel
         /*-----------------*/
         /* Hitbox du perso */
         /*-----------------*/
-        g.setColor(Color.BLACK);
+        g.setColor(Color.WHITE);
         g.drawRect(this.posXPerso, this.posYPerso, Panel.LARGEUR_PERSO, Panel.HAUTEUR_PERSO);
 
 
@@ -92,6 +94,7 @@ public class Panel extends JPanel
         int height = Panel.LARGEUR_PERSO / 2;
         int x      = this.posXPerso + width / 2;
         int y      = this.posYPerso;
+
         g.fillOval(x, y, width, height);
 
 
@@ -99,7 +102,26 @@ public class Panel extends JPanel
         /* Dessin du corps */
         /*-----------------*/
         g.setColor(Color.GREEN);
-        //x      = x - ;
+        y      = y + height + 10;
+        height = (Panel.HAUTEUR_PERSO / 2) - height;
+
+        g.fillRect(x, y, width, height);
+
+
+        /*-------------------*/
+        /* Dessin des jambes */
+        /*-------------------*/
+        g.setColor(Color.YELLOW);
+        /* Jambes gauche */
+        width = (width / 2) - width / 4;
+        y     = y + height;
+
+        g.fillRect(x, y, width, height);
+
+        /* Jambes droite */
+        x     = x + width*3;
+
+        g.fillRect(x, y, width, height);
 
 
 
@@ -108,6 +130,7 @@ public class Panel extends JPanel
         /*--------------------*/
         g.setColor(Color.BLUE);
         /* Epaule gauche */
+
 
         /* Epaule droite */
 
@@ -119,17 +142,8 @@ public class Panel extends JPanel
         g.setColor(Color.PINK);
         /* Bras gauche */
 
+
         /* Bras droit */
-
-
-
-        /*-------------------*/
-        /* Dessin des jambes */
-        /*-------------------*/
-        g.setColor(Color.YELLOW);
-        /* Jambes gauche */
-
-        /* Jambes droite */
 
 
 
@@ -142,7 +156,7 @@ public class Panel extends JPanel
 
 /*
 
-hauteur --> 16 pixels * 4 = 64 pixels
-largeur --> 12 pixels * 4 = 48 pixels
+hauteur --> 16 pixels * 6 = 96 pixels
+largeur --> 12 pixels * 6 = 72 pixels
 
 */
