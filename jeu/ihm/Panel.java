@@ -8,6 +8,7 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import 
 
 public class Panel extends JPanel
 {
@@ -25,6 +26,14 @@ public class Panel extends JPanel
     public Panel(Controleur ctrl)
     {
         this.ctrl = ctrl;
+
+        final OsThemeDetector detector = OsThemeDetector.getDetector();
+        final boolean isDarkThemeUsed = detector.isDark();
+        if (isDarkThemeUsed) {
+            //The OS uses a dark theme
+        } else {
+            //The OS uses a light theme
+        }
 
         this.setBackground(Color.BLACK);
 
@@ -99,7 +108,7 @@ public class Panel extends JPanel
 
 
         /*-----------------*/
-        /* Dessin du corps */
+        /* Dessin du torse */
         /*-----------------*/
         g.setColor(Color.GREEN);
         y      = y + height + 10;
