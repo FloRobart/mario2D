@@ -25,7 +25,7 @@ public class Panel extends JPanel
     public Panel(Controleur ctrl)
     {
         this.ctrl = ctrl;
-
+/*
         final OsThemeDetector detector = OsThemeDetector.getDetector();
         final boolean isDarkThemeUsed = detector.isDark();
         if (isDarkThemeUsed) {
@@ -33,7 +33,7 @@ public class Panel extends JPanel
         } else {
             //The OS uses a light theme
         }
-
+*/
         this.setBackground(Color.BLACK);
 
         /*-------------------------*/

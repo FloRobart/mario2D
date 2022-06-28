@@ -5,7 +5,7 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-import jeu.Controleur;
+import src.Controleur;
 
 
 public class Frame extends JFrame
