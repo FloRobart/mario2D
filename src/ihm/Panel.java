@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 public class Panel extends JPanel
 {
     /* Constante */
-    private static final int HAUTEUR_PERSO = 120;
-    private static final int LARGEUR_PERSO = 80;
+    private static final int HAUTEUR_PERSO = 240/*120*/;
+    private static final int LARGEUR_PERSO = 80/*80*/;
     
     /* Attribut */
     private Controleur ctrl;
@@ -25,15 +25,7 @@ public class Panel extends JPanel
     public Panel(Controleur ctrl)
     {
         this.ctrl = ctrl;
-/*
-        final OsThemeDetector detector = OsThemeDetector.getDetector();
-        final boolean isDarkThemeUsed = detector.isDark();
-        if (isDarkThemeUsed) {
-            //The OS uses a dark theme
-        } else {
-            //The OS uses a light theme
-        }
-*/
+
         this.setBackground(Color.BLACK);
 
         /*-------------------------*/
@@ -98,20 +90,27 @@ public class Panel extends JPanel
         /* Dessin de la tête */
         /*-------------------*/
         g.setColor(Color.RED);
-        int width  = Panel.LARGEUR_PERSO / 2;
-        int height = Panel.LARGEUR_PERSO / 2;
-        int x      = this.posXPerso + width / 2;
-        int y      = this.posYPerso;
+        int tailleCou = 8;
+        int width     = Panel.LARGEUR_PERSO;
+        int height    = Panel.LARGEUR_PERSO;
+        int x         = this.posXPerso;
+        int y         = this.posYPerso;
 
         g.fillOval(x, y, width, height);
+
+        //test
+        g.drawLine(x, y, x, y*10);
+        g.drawLine(x+width, y, x+width, y*10);
 
 
         /*-----------------*/
         /* Dessin du torse */
         /*-----------------*/
         g.setColor(Color.GREEN);
-        y      = y + height + 10;
-        height = (Panel.HAUTEUR_PERSO / 2) - height;
+        int widthTorse  = width  = width / 2;
+                          height = ((Panel.HAUTEUR_PERSO - height) / 2) - tailleCou / 2;
+        int xTorse      = x      = x + width / 2;
+        int yTorse      = y      = y + height + tailleCou;
 
         g.fillRect(x, y, width, height);
 
@@ -121,16 +120,15 @@ public class Panel extends JPanel
         /*-------------------*/
         g.setColor(Color.YELLOW);
         /* Jambes gauche */
-        width = (width / 2) - width / 4;
-        y     = y + height;
+        width = width / 2 - width / 4;
+        y    += height;
 
         g.fillRect(x, y, width, height);
 
         /* Jambes droite */
-        x     = x + width*3;
+        x += width*3;
 
         g.fillRect(x, y, width, height);
-
 
 
         /*--------------------*/
@@ -138,10 +136,16 @@ public class Panel extends JPanel
         /*--------------------*/
         g.setColor(Color.BLUE);
         /* Epaule gauche */
+        width = widthTorse;
+        x = xTorse - width / 2;
+        y = yTorse;
 
+        g.fillArc(x, y, width, width, 90, 90);
 
         /* Epaule droite */
+        x = xTorse + widthTorse - width / 2;
 
+        g.fillArc(x, y, width, width, 90, -90);
 
 
         /*-----------------*/
@@ -149,14 +153,22 @@ public class Panel extends JPanel
         /*-----------------*/
         g.setColor(Color.PINK);
         /* Bras gauche */
+        x = xTorse - width / 2;
+        y = yTorse + width / 2;
+        width = widthTorse / 2 - widthTorse / 4;
 
+        g.fillRect(x, y, width, height);
 
         /* Bras droit */
+        x += widthTorse * 2 - width;
+
+        g.fillRect(x, y, width, height);
 
 
 
-
-
+        /*------------------------------*/
+        /* Retour à la couleur initiale */
+        /*------------------------------*/
         g.setColor(couleurInitiale);
     }
 }

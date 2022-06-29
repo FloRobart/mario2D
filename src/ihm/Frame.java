@@ -4,7 +4,6 @@ package src.ihm;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
-
 import src.Controleur;
 
 
