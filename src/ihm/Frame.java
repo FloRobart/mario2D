@@ -21,10 +21,12 @@ public class Frame extends JFrame
         Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         
         this.setTitle("Jeu");
-        this.setSize((int)tailleEcran.getWidth(), (int)tailleEcran.getHeight());
+        this.setSize(500, 500);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH); // pleine écran
         this.setLocation(0, 0);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
         /*------------------------*/
         /* Création des composant */

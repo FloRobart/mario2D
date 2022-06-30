@@ -94,7 +94,7 @@ public class Panel extends JPanel
         int x         = this.posXPerso;
         int y         = this.posYPerso;
         int largeur   = Panel.LARGEUR_PERSO;
-        int hauteur   = Panel.LARGEUR_PERSO;
+        int hauteur   = Panel.HAUTEUR_PERSO / 4;
 
         g.fillOval(x, y, largeur, hauteur);
 
@@ -110,7 +110,7 @@ public class Panel extends JPanel
         int xTorse       = x       = this.posXPerso + Panel.LARGEUR_PERSO / 4;
         int yTorse       = y       = this.posYPerso + hauteur + tailleCou;
         int largeurTorse = largeur = Panel.LARGEUR_PERSO / 2;
-        int hauteurTorse = hauteur = (Panel.HAUTEUR_PERSO) / 2 - tailleCou;
+        int hauteurTorse = hauteur = Panel.HAUTEUR_PERSO - tailleCou / 2;
 
         g.fillRect(x, y, largeur, hauteur);
 
