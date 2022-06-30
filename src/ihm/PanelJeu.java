@@ -9,11 +9,11 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 
-public class Panel extends JPanel
+public class PanelJeu extends JPanel
 {
     /* Constante */
-    private static final int HAUTEUR_PERSO = 240/*120*/;
-    private static final int LARGEUR_PERSO = 80/*80*/;
+    private static final int HAUTEUR_PERSO = 200/*120*/;
+    private static final int LARGEUR_PERSO = 200/*80*/;
     
     /* Attribut */
     private Controleur ctrl;
@@ -22,7 +22,7 @@ public class Panel extends JPanel
     private int posYPerso;
 
     
-    public Panel(Controleur ctrl)
+    public PanelJeu(Controleur ctrl)
     {
         this.ctrl = ctrl;
 
@@ -53,8 +53,8 @@ public class Panel extends JPanel
         super.paint(g);
         Color couleurInitiale = g.getColor();
 
-        this.posXPerso = 400;
-        this.posYPerso = 400;
+        this.posXPerso = 100;
+        this.posYPerso = 100;
 
         this.dessinerPersonnage(g);
 
@@ -83,7 +83,7 @@ public class Panel extends JPanel
         /* Hitbox du perso */
         /*-----------------*/
         g.setColor(Color.WHITE);
-        g.drawRect(this.posXPerso, this.posYPerso, Panel.LARGEUR_PERSO, Panel.HAUTEUR_PERSO);
+        g.drawRect(this.posXPerso, this.posYPerso, PanelJeu.LARGEUR_PERSO, PanelJeu.HAUTEUR_PERSO);
 
 
         /*-------------------*/
@@ -93,24 +93,20 @@ public class Panel extends JPanel
         int tailleCou = 8;
         int x         = this.posXPerso;
         int y         = this.posYPerso;
-        int largeur   = Panel.LARGEUR_PERSO;
-        int hauteur   = Panel.HAUTEUR_PERSO / 4;
+        int largeur   = PanelJeu.LARGEUR_PERSO;
+        int hauteur   = PanelJeu.HAUTEUR_PERSO / 4;
 
         g.fillOval(x, y, largeur, hauteur);
-
-        //test
-        //g.drawLine(x, y, x, y*10);
-        //g.drawLine(x+largeur, y, x+largeur, y*10);
 
 
         /*-----------------*/
         /* Dessin du torse */
         /*-----------------*/
         g.setColor(Color.GREEN);
-        int xTorse       = x       = this.posXPerso + Panel.LARGEUR_PERSO / 4;
+        int xTorse       = x       = this.posXPerso + PanelJeu.LARGEUR_PERSO / 4;
         int yTorse       = y       = this.posYPerso + hauteur + tailleCou;
-        int largeurTorse = largeur = Panel.LARGEUR_PERSO / 2;
-        int hauteurTorse = hauteur = Panel.HAUTEUR_PERSO - tailleCou / 2;
+        int largeurTorse = largeur = PanelJeu.LARGEUR_PERSO / 2;
+        int hauteurTorse = hauteur = PanelJeu.HAUTEUR_PERSO / 2 - hauteur / 2 - tailleCou / 2;
 
         g.fillRect(x, y, largeur, hauteur);
 
@@ -119,14 +115,15 @@ public class Panel extends JPanel
         /* Dessin des jambes */
         /*-------------------*/
         g.setColor(Color.YELLOW);
+        largeur = largeurTorse / 3;
         /* Jambes gauche */
-        largeur = largeur / 2 - largeur / 4;
-        y    += hauteur;
+        y       = yTorse + hauteurTorse;
 
         g.fillRect(x, y, largeur, hauteur);
 
         /* Jambes droite */
-        x += largeur*3;
+        g.setColor(Color.CYAN);
+        x       = xTorse + largeurTorse - largeur;
 
         g.fillRect(x, y, largeur, hauteur);
 
@@ -135,32 +132,32 @@ public class Panel extends JPanel
         /* Dessin des épaules */
         /*--------------------*/
         g.setColor(Color.BLUE);
+        y       = yTorse;
         /* Epaule gauche */
-        largeur = largeurTorse;
-        x = xTorse - largeur / 2;
-        y = yTorse;
+        x       = xTorse - largeurTorse / 2;
 
-        g.fillArc(x, y, largeur, largeur, 90, 90);
+        g.fillArc(x, y, largeurTorse, largeurTorse, 90, 90);
 
         /* Epaule droite */
-        x = xTorse + largeurTorse - largeur / 2;
+        x       = xTorse + largeurTorse / 2;
 
-        g.fillArc(x, y, largeur, largeur, 90, -90);
+        g.fillArc(x, y, largeurTorse, largeurTorse, 90, -90);
 
 
         /*-----------------*/
         /* Dessin des bras */
         /*-----------------*/
         g.setColor(Color.PINK);
+        largeur = largeurTorse / 4;
+        hauteur = hauteurTorse;
+        y       = yTorse + largeurTorse / 2;
         /* Bras gauche */
-        x = xTorse - largeur / 2;
-        y = yTorse + largeur / 2;
-        largeur = largeurTorse / 2 - largeurTorse / 4;
+        x       = this.posXPerso;
 
         g.fillRect(x, y, largeur, hauteur);
 
         /* Bras droit */
-        x += largeurTorse * 2 - largeur;
+        x       = this.posXPerso + PanelJeu.LARGEUR_PERSO - largeur;
 
         g.fillRect(x, y, largeur, hauteur);
 

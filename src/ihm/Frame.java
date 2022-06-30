@@ -1,24 +1,22 @@
 package src.ihm;
 
-
-import java.awt.Dimension;
-
 import javax.swing.JFrame;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import src.Controleur;
 
 
-public class Frame extends JFrame
+public class Frame extends JFrame implements ActionListener
 {
     private Controleur ctrl;
 
-    private Panel panel;
+    private PanelJeu panel;
 
 
     public Frame(Controleur ctrl)
     {
         this.ctrl = ctrl;
-
-        Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         
         this.setTitle("Jeu");
         this.setSize(500, 500);
@@ -31,7 +29,7 @@ public class Frame extends JFrame
         /*------------------------*/
         /* Création des composant */
         /*------------------------*/
-        this.panel = new Panel(this.ctrl);
+        this.panel = new PanelJeu(this.ctrl);
 
 
         /*---------------------*/
@@ -50,5 +48,13 @@ public class Frame extends JFrame
     public void majIhm()
     {
         this.panel.repaint();
+    }
+
+
+
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+        
     }
 }
