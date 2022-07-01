@@ -70,26 +70,19 @@ public class PanelJeu extends JPanel
     {
         Color couleurInitiale = g.getColor();
 
-        //g.setColor(this.getBackground());
-
-        /*------*/
-        /* Test */
-        /*------*/
-        //g.setColor(Color.RED);
-        //g.fillRect(this.posXPerso, this.posYPerso, 10, 10);
-
 
         /*-----------------*/
         /* Hitbox du perso */
         /*-----------------*/
-        g.setColor(Color.WHITE);
-        g.drawRect(this.posXPerso, this.posYPerso, PanelJeu.LARGEUR_PERSO, PanelJeu.HAUTEUR_PERSO);
+        //g.setColor(Color.WHITE);
+        //g.drawRect(this.posXPerso, this.posYPerso, PanelJeu.LARGEUR_PERSO, PanelJeu.HAUTEUR_PERSO);
 
+
+        g.setColor(this.ctrl.getCouleur());
 
         /*-------------------*/
         /* Dessin de la tête */
         /*-------------------*/
-        g.setColor(Color.RED);
         int tailleCou = 8;
         int x         = this.posXPerso;
         int y         = this.posYPerso;
@@ -102,7 +95,6 @@ public class PanelJeu extends JPanel
         /*-----------------*/
         /* Dessin du torse */
         /*-----------------*/
-        g.setColor(Color.GREEN);
         int xTorse       = x       = this.posXPerso + PanelJeu.LARGEUR_PERSO / 4;
         int yTorse       = y       = this.posYPerso + hauteur + tailleCou;
         int largeurTorse = largeur = PanelJeu.LARGEUR_PERSO / 2;

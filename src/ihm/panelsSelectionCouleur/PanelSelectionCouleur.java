@@ -1,6 +1,9 @@
 package src.ihm.panelsSelectionCouleur;
 
 import javax.swing.*;
+
+import src.Controleur;
+
 import java.awt.*;
 
 public class PanelSelectionCouleur extends JPanel
@@ -12,10 +15,9 @@ public class PanelSelectionCouleur extends JPanel
     private PanelSelectCouleur panelBleu;
 
 
-    public PanelSelectionCouleur()
+    public PanelSelectionCouleur(Controleur ctrl)
     {
-        this.setSize    (400, 400);
-        this.setLocation(  0,   0);
+        this.setSize(400, 400);
 
         this.setLayout(new GridLayout(4, 1));
 
@@ -49,5 +51,10 @@ public class PanelSelectionCouleur extends JPanel
         b = this.panelBleu .getValeur();
 
         this.panelCouleur.majCouleur(r, v, b);
+    }
+
+    public Color getCouleur()
+    {
+        return this.panelCouleur.getCouleur();
     }
 }
